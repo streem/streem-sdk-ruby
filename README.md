@@ -37,25 +37,29 @@ Streem.init(api_key_id, api_key_secret)
 To create a Streem Token, first create a `TokenBuilder`:
 
 ```ruby
-    builder = Streem::TokenBuilder.new
+builder = Streem::TokenBuilder.new
 ```
 
 Then specify the details for the currently logged-in user:
 ```ruby
-    user = # your logged in user
+user = # your logged in user
 
-    # required
-    builder.user_id = user.id
+# required
+builder.user_id = user.id
 
-    # recommended
-    builder.name = user.name
-    builder.email = user.email
-    builder.avatar_url = user.avatar
+# recommended
+builder.name = user.name
+builder.email = user.email
+builder.avatar_url = user.avatar
+
+# optional
+builder.token_expiration_ms = ... # Determines how long this token is valid for starting a session (default 5 minutes)
+builder.session_expiration_ms = ... # Once the session has started, how long can the user remain logged in (default 4 hours)
 ```
 
 Finally, call `token` to generate the token string:
 ```ruby
-    token = builder.token
+token = builder.token
 ```
 
 #### Embedded SSO
@@ -68,7 +72,7 @@ by appending `#token=...` with your token.
 For example, to create an `iframe` to the root page in streem, you might have:
 
 ```html
-    <iframe src="https://{company-code}.streempro.app#token={token}"/>
+<iframe src="https://{company-code}.streempro.app#token={token}"/>
 ```
 
 Be sure to substitute `{company-code}` and `{token}` for the correct values.
