@@ -82,10 +82,6 @@ Be sure to substitute `{company-code}` and `{token}` for the correct values.
 If using the iOS or Android SDKs, you will provide the Streem Token to the client, and pass to the SDK via `Streem.identify()`.  More
 details can be found in documentation of the individual SDKs
 
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/streem-token-rubygem.
-
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
