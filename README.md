@@ -72,7 +72,7 @@ by appending `#token=...` with your token.
 For example, to create an `iframe` to the root page in streem, you might have:
 
 ```html
-<iframe src="https://{company-code}.swa.prod-us.streem.cloud#token={token}"/>
+<iframe src="https://{company-code}.streempro.app/embed#token={token}"/>
 ```
 
 Be sure to substitute `{company-code}` and `{token}` for the correct values.
