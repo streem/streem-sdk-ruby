@@ -7,7 +7,7 @@ module Streem
   # Class for building Streem Tokens.  Configure the token using the available setter methods, and finalize the token
   # by calling `builder.token`.  This returns a string representation of the token, that can be provided to the client.
   class TokenBuilder
-    attr_accessor :user_id, :name, :email, :avatar_url, :token_expiration_ms, :session_expiration_ms
+    attr_accessor :user_id, :name, :email, :avatar_url, :token_expiration_ms, :session_expiration_ms, :reservation_sid
 
     def initialize
       @token_expiration_ms = 5 * 60 * 1000 # five minutes
@@ -22,6 +22,7 @@ module Streem
       jwk = JOSE::JWK.from(key_as_json)
 
       claim = token_claims
+      claim['streem:reservation_sid'] = @reservation_sid if @reservation_sid
 
       # noinspection RubyStringKeysInHashInspection
       signed_token = JOSE::JWS.sign(jwk, claim.to_json, { "alg" => "ES256" })

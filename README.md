@@ -55,6 +55,9 @@ builder.avatar_url = user.avatar
 # optional
 builder.token_expiration_ms = ... # Determines how long this token is valid for starting a session (default 5 minutes)
 builder.session_expiration_ms = ... # Once the session has started, how long can the user remain logged in (default 4 hours)
+
+# If using the Group Reservation feature, set the reservation sid from the API response
+builder.reservation_sid = ...
 ```
 
 Finally, call `token` to generate the token string:

@@ -23,6 +23,7 @@ class StreemTest < Minitest::Test
     builder.email = "test@streem.pro"
     builder.token_expiration_ms = 10 * 60 * 1000 # ten minutes
     builder.session_expiration_ms = 60 * 60 * 1000 # one hour
+    builder.reservation_sid = "rsv_abc123"
 
     token = builder.token
     refute_nil token
@@ -36,6 +37,7 @@ class StreemTest < Minitest::Test
     assert_equal "https://tr.rbxcdn.com/680e8cd3b087d56459a92b93120b152d/352/352/Avatar/Png", payload["picture"]
     assert_equal "test@streem.pro", payload["email"]
     assert_equal "https://api.test.streem.cloud/", payload["aud"]
+    assert_equal "rsv_abc123", payload["streem:reservation_sid"]
 
     # Expiration dates should be within 1 second of those specified
     assert_in_delta (Time.now + 10.minutes).to_i, Time.at(payload["exp"]).to_i, 1
