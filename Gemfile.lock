@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    streem (0.1.4)
+    streem (0.2.0)
       jose (= 1.1.3)
 
 GEM
